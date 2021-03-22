@@ -1,0 +1,32 @@
+[user]
+	name = Bartek Szostek
+	email = szostek.bartek@gmail.com
+
+# Shortcuts for git commands.
+[alias]
+	a   = add
+	b   = branch
+	ba  = branch --all
+	c   = commit
+	ca  = commit --amend --no-edit
+	cae = commit --amend
+	ch  = checkout
+	s   = status
+	d   = diff
+	dc  = diff --cached
+	ph  = push
+	pl  = pull
+	fap = fetch --all --prune
+	# History graph.
+	lol  = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=format:\"%C(yellow)%h %Cred%cr %Cgreen`(%an)%C(white)%d%Creset %s\" --abbrev-commit --all
+
+# Bring some colour to this dull life.
+[color]
+	branch      = auto
+	diff        = auto
+	interactive = auto
+	status      = auto
+
+[core]
+	autocrlf = true
