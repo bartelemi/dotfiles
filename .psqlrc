@@ -1,12 +1,11 @@
 -- PostgreSQL command line tool settings.
 
-\echo 'Loaded config from ~/.psqlrc';
-
 -- Be quiet at startup.
 \set QUIET 1
 
--- Prompt look.
-\set PROMPT1 '%[%033[1m%]%M %n@%/%R%~%x%[%033[0m%]%# '
+-- Default prompt look: [hostname] @ [database] [conn status] [transaction status] >
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%~%x%[%033[0m%]%> '
+-- Multi-line prompt look.
 \set PROMPT2 '[more] %R > '
 
 -- Automatically switch between table/expanded table format.
@@ -30,7 +29,7 @@
 set intervalstyle to 'postgres_verbose';
 
 -- Set app name.
-set application_name to 'psilo@lenovo';
+set application_name to 'psilo@psql';
 
 -- History settings.
 -- Ignore duplicate entries if the same command was run more than once.
@@ -44,16 +43,18 @@ set application_name to 'psilo@lenovo';
 -- Helpful aliases.
 
 -- > :version -- gives psql version output
-\set version    'SELECT version();;'
+\set version    'SELECT version();'
 
 -- > :extensions  -- lists all available extensions
-\set extensions 'SELECT * FROM pg_available_extensions;;'
+\set extensions 'SELECT * FROM pg_available_extensions;'
 
 -- > :settings  -- shows all psql settings and their values
-\set settings   'SELECT name, setting,unit,context FROM pg_settings;;'
+\set settings   'SELECT name, setting,unit,context FROM pg_settings;'
 
 -- > :uptime  -- how long has this thing been up?
-\set uptime     'SELECT now() - pg_postmaster_start_time() AS uptime;;'
+\set uptime     'SELECT now() - pg_postmaster_start_time() AS uptime;'
 
 -- Restore echo.
 \unset QUIET
+
+\echo 'Loaded config from ~/.psqlrc';
